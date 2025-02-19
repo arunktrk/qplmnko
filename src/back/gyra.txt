@@ -1,0 +1,28 @@
+private static void arunLocal(){
+        Server server = new Server("localhost", 3000);
+        server.openApplication("C:\\Program Files\\PuTTY\\putty.exe");
+        Desktop desktop = server.getDesktop();
+        desktop.waitForWindow(By.name("PuTTY Configuration"),5);
+        Window window = desktop.findWindow(By.name("PuTTY Configuration"));
+        desktop.waitForWindow(By.xpath("//Edit[@Name='Host Name (or IP address)']"),5);
+        Element txtField = window.findElement(By.xpath("//Edit[@Name='Host Name (or IP address)']"));
+        txtField.sendKeys("192.16.18.0");
+        desktop.waitForWindow(By.xpath("//Edit[@Name='Port']"),5);
+        Element  strPort=window.findElement(By.xpath("//Edit[@Name='Port']"));
+        String strportNumber=strPort.getValue();
+        System.out.println("Port Number ="+strportNumber);
+        desktop.waitForWindow(By.xpath("//Button[@Name='Cancel']"),5);
+        Element btnCancel= window.findElement(By.xpath("//Button[@Name='Cancel']"));
+        btnCancel.click();
+        System.out.println("The Execution is Completed------");
+    }
+	
+	import com.codoid.products.client.*;
+	
+	<dependency>
+            <groupId>com.codoid.products</groupId>
+            <artifactId>gyra-client</artifactId>
+            <version>1.1</version>
+        </dependency>
+		
+		
